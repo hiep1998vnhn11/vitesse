@@ -4,9 +4,19 @@
 
 declare module 'vue' {
   export interface GlobalComponents {
+    AppDialog: typeof import('./components/AppDialog.vue')['default']
+    Avatar: typeof import('./components/Avatar.vue')['default']
+    CarbonArrowLeft: typeof import('~icons/carbon/arrow-left')['default']
+    CarbonMenu: typeof import('~icons/carbon/menu')['default']
+    CarbonNotification: typeof import('~icons/carbon/notification')['default']
+    CarbonTime: typeof import('~icons/carbon/time')['default']
     Counter: typeof import('./components/Counter.vue')['default']
     Footer: typeof import('./components/Footer.vue')['default']
+    Header: typeof import('./components/container/Header.vue')['default']
+    LeftFilter: typeof import('./components/LeftFilter.vue')['default']
+    PageWrapper: typeof import('./components/PageWrapper.vue')['default']
     README: typeof import('./components/README.md')['default']
+    Sidebar: typeof import('./components/container/Sidebar.vue')['default']
   }
 }
 

@@ -1,9 +1,39 @@
+<script lang="ts" setup>
+import Header from '~/components/container/Header.vue'
+import Sidebar from '~/components/container/Sidebar.vue'
+
+const sidebarCollapse = ref(false)
+const toggleSidebar = () => {
+  sidebarCollapse.value = !sidebarCollapse.value
+}
+onMounted(() => {
+})
+
+</script>
 <template>
-  <main class="px-4 py-10 text-center text-gray-700 dark:text-gray-200">
-    <router-view />
-    <Footer />
-    <div class="mt-5 mx-auto text-center opacity-25 text-sm">
-      [Default Layout]
+  <div class="default-layout">
+    <Sidebar :collapse="sidebarCollapse" @toggleCollapse="toggleSidebar()" />
+    <div class="content">
+      <Header />
+
+      <main>
+        <router-view />
+      </main>
     </div>
-  </main>
+  </div>
 </template>
+
+<style lang="scss" scoped>
+.default-layout {
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+  display: flex;
+
+  .content {
+    flex: 1;
+    padding: 18px 30px;
+    background: $color-background;
+  }
+}
+</style>

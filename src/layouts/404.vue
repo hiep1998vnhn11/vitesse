@@ -1,23 +1,40 @@
-<script setup lang="ts">
-const router = useRouter()
-const { t } = useI18n()
-</script>
+<script lang="ts" setup>
+import Header from '~/components/container/Header.vue'
+import Sidebar from '~/components/container/Sidebar.vue'
 
+const sidebarCollapse = ref(false)
+const toggleSidebar = () => {
+  sidebarCollapse.value = !sidebarCollapse.value
+}
+onMounted(() => {
+})
+
+</script>
 <template>
-  <main class="px-4 py-10 text-center text-teal-700 dark:text-gray-200">
-    <div>
-      <p class="text-4xl">
-        <carbon-warning class="inline-block" />
-      </p>
+  <div class="default-layout">
+    <Sidebar :collapse="sidebarCollapse" @toggleCollapse="toggleSidebar()" />
+    <div class="content">
+      <Header />
+
+      <main>
+        <router-view />
+      </main>
     </div>
-    <router-view />
-    <div>
-      <button
-        class="btn m-3 text-sm mt-8"
-        @click="router.back()"
-      >
-        {{ t('button.back') }}
-      </button>
-    </div>
-  </main>
+  </div>
 </template>
+
+<style lang="scss" scoped>
+.default-layout {
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+  display: flex;
+
+  .content {
+    flex: 1;
+    padding: 18px 30px;
+    background: $color-background;
+    overflow-y: auto;
+  }
+}
+</style>
